@@ -10,16 +10,16 @@ public class Main {
 
         ArrayList<Integer> numbers = new ArrayList<>();
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 5; i++) {
             numbers.add(i * 2 + 5);
         }
 
-        BinarySearchTree myTree = BinarySearchTree.build(numbers);
+        BinarySearchTree myTree = new BinarySearchTree(numbers);
 
         // write some test code here
-        System.out.println(myTree.search(7)); // should be true
-        System.out.println(myTree.search(55)); // should be true
-        System.out.println(myTree.search(34535)); // should be false
+//        System.out.println(myTree.search(7)); // should be true
+//        System.out.println(myTree.search(55)); // should be true
+//        System.out.println(myTree.search(34535)); // should be false
 
 
         System.out.println("done");

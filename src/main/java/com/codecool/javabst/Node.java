@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Node {
-    private Integer nodeValue= null;
+    private Integer nodeValue = null;
     private List<Integer> leftChildNumbers = new ArrayList<>();
     private List<Integer> rightChildNumbers = new ArrayList<>();
     private Node leftChild = null;
-    private Node rightChild= null;
+    private Node rightChild = null;
 
     public Node(List<Integer> elements) {
         if (elements.size() == 1) {

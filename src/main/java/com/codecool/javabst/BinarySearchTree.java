@@ -2,20 +2,24 @@ package com.codecool.javabst;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 // Skeleton for the Binary search tree. Feel free to modify this class.
 public class BinarySearchTree {
     private Node root;
     private List<Node> nodes = new ArrayList<>();
-    private List<Integer> elements;
+    public List<Integer> elements;
 
     public BinarySearchTree(List<Integer> elements) {
-        // TODO construct a binary search tree here
         this.elements = elements;
+        buildTree();
+    }
+
+    private void buildTree() {
+        // TODO construct a binary search tree here
         root = new Node(elements);
         nodes.add(root);
-        System.out.println(elements);
         List<Node> currentNodes = new ArrayList<>(Arrays.asList(root));
         List<Node> nextNodes = new ArrayList<>();
         while (!currentNodes.isEmpty()) {
@@ -37,7 +41,6 @@ public class BinarySearchTree {
             currentNodes.addAll(nextNodes);
             nextNodes.clear();
         }
-        System.out.println("nodes: " + this.nodes);
     }
 
 
@@ -67,14 +70,38 @@ public class BinarySearchTree {
     }
 
 
-
-    public void add(Integer toAdd) {
+    public void add(Integer toAdd) throws Exception {
         // TODO adds an element. Throws an error if it exist.
-
+        if (!this.search(toAdd)) {
+            elements.add(toAdd);
+            Collections.sort(elements);
+            nodes.clear();
+            this.buildTree();
+        } else {
+            throw new IntegerAlreadyInListException("Integer already in list!");
+        }
     }
 
-    public void remove(Integer toRemove) {
+    public void remove(Integer toRemove) throws IntegerNotInListException {
         // TODO removes an element. Throws an error if its not on the tree.
+        if (this.search(toRemove)) {
+            elements.remove(toRemove);
+            nodes.clear();
+            this.buildTree();
+        } else {
+            throw new IntegerNotInListException("Integer not in list, cannot be removed!");
+        }
     }
 
+    class IntegerAlreadyInListException extends Exception {
+        public IntegerAlreadyInListException(String message) {
+            super(message);
+        }
+    }
+
+    class IntegerNotInListException extends Throwable {
+        public IntegerNotInListException(String message) {
+            super(message);
+        }
+    }
 }

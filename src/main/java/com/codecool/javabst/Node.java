@@ -8,8 +8,8 @@ public class Node {
     private Integer nodeValue= null;
     private List<Integer> leftChildNumbers = new ArrayList<>();
     private List<Integer> rightChildNumbers = new ArrayList<>();
-    private Node leftChild;
-    private Node rightChild;
+    private Node leftChild = null;
+    private Node rightChild= null;
 
     public Node(List<Integer> elements) {
         if (elements.size() == 1) {
@@ -70,12 +70,15 @@ public class Node {
 
     @Override
     public String toString() {
+        Integer left = (this.leftChild != null) ? this.leftChild.getNodeValue() : null;
+        Integer right = (this.rightChild != null) ? this.rightChild.getNodeValue() : null;
+
         return "Node{" +
                 "nodeValue=" + nodeValue +
 //                ", leftChildNumbers=" + leftChildNumbers +
 //                ", rightChildNumbers=" + rightChildNumbers +
-                ", leftChild=" + leftChild +
-                ", rightChild=" + rightChild +
+                ", leftChild=" + left +
+                ", rightChild=" + right +
                 '}';
     }
 }
